@@ -7,6 +7,7 @@ btnSearchWeather.addEventListener("click", async () => {
       `https://api.openweathermap.org/data/2.5/weather?q=${inptValue.value}&units=imperial&appid=21c0cc44cd70f2c5f1ec8bd2f19c86ce`
     );
     const data = await weather.json();
+    inptValue.value = "";
     return data;
   }
   const weatherData = await findYourWeather();

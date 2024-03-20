@@ -12,12 +12,11 @@
     />
   </head>
 
-  <body>
-    <main class="container">
-      <section
-        id="currentWeather"
-        class="d-flex flex-column justify-content-center align-items-center"
-      >
+  <body class="bg-primary" style="--bs-bg-opacity: 0.3">
+    <main
+      class="container d-flex flex-column justify-content-center align-items-center"
+    >
+      <section id="userWeather">
         <header class="text-center">
           <h1>Whether App!!</h1>
           <p id="sub-title">Would you like to know your Weather?</p>
@@ -35,20 +34,25 @@
         </div>
 
         <!-- Temperature of City -->
-        <div id="city" class="text-center mt-3">
+        <div id="city" class="text-center mt-3 card">
           <h2 id="cityName">New Jersey</h2>
-          <img
-            src=""
-            alt="Image goes here"
-            class="m-4"
-            id="cityIcon"
-            style="width: 8rem"
-          />
+          <img src="" alt="Image goes here" id="cityIcon" class="m-4" />
           <p>Your Temperature is <span id="temp">56</span> degree</p>
         </div>
+      </section>
 
-        <!-- Future days -->
-        <div class="card text-center" style="width: 18rem">
+      <!-- Future days -->
+      <section
+        id="Future-days"
+        class="container text-center d-flex flex-column justify-content-center align-items-center m-4"
+      >
+        <h2>The Weather in you location for the upcomming days!</h2>
+
+        <!-- card -->
+        <div
+          class="card text-center shadow-lg p-3 mb-5 bg-body-tertiary rounded"
+          style="width: 18rem"
+        >
           <h3 id="dayOne">Sunday</h3>
           <img src="" alt="Image goes here" class="m-4" id="dayOneIcon" />
           <p id="dayOneTemp">56 degree</p>
