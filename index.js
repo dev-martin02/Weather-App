@@ -1,25 +1,26 @@
-const cityName = document.getElementById("city-name");
-const btnSearchWeather = document.getElementById("search-weather");
-const sectionElement = document.getElementById("currentWeather");
-const mainElement = sectionElement.querySelector("main");
-const tempText = mainElement.querySelector("p");
+const inptValue = document.querySelector("input");
+const btnSearchWeather = document.getElementById("searchWeather");
 
 btnSearchWeather.addEventListener("click", async () => {
-  const userCity = cityName.value;
-
   async function findYourWeather() {
     const weather = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&units=imperial&appid=21c0cc44cd70f2c5f1ec8bd2f19c86ce`
+      `https://api.openweathermap.org/data/2.5/weather?q=${inptValue.value}&units=imperial&appid=21c0cc44cd70f2c5f1ec8bd2f19c86ce`
     );
     const result = await weather.json();
-    const userWeather = result.weather[0].description;
     console.log(result);
-    console.log(userWeather);
+    const userWeather = result.weather[0].description;
     return result;
   }
   const weatherData = await findYourWeather();
+  console.lof(weatherData);
+  const userCity = document.getElementById("cityName");
+  userCity.innerText = weatherData.name;
 
+  const tempText = document.getElementById("temp");
   const userTemp = weatherData.main.temp;
-  tempText.innerHTML = `Your TEMPERATURE is ${userTemp}`;
-  mainElement.appendChild(newElement);
+  tempText.innerHTML = userTemp;
+
+  const cityImg = document.getElementById("cityIcon");
+  const dataIcon = weatherData.weather[0].icon;
+  cityImg.src = `http://openweathermap.org/img/wn/${dataIcon}.png`;
 });
